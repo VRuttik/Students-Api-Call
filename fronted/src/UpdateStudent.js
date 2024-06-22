@@ -31,6 +31,7 @@ function UpdateStudent() {
                     </div>
 
                     <button className='btn btn-success'>Submit</button>
+                    <button className='btn btn-success' style={{ float: 'right' }}>Cancel</button>
                 </form>
             </div>
         </div>

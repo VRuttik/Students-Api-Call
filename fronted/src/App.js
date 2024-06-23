@@ -34,6 +34,7 @@ function App() {
 
     const handleAddStudent = async (newStudent) => {
         try {
+            const updatedStudents = [...students, newStudent];
             const response = await fetch('https://api.jsonbin.io/v3/b/6676a887e41b4d34e407300b', {
                 method: 'PUT',
                 headers: {
@@ -41,12 +42,12 @@ function App() {
                     'X-Master-Key': '$2a$10$R8Bnxpjj80f8ikXutRQjUOgV9YHIWt5h7ZTKEnTAVtMMcVSKYd.L2',
                     'X-Access-Key': '$2a$10$c4R6pg/2VliBAq4lwlbmDOsJNuXN2DWOyPwhlZmZLFxr822dQ7TgK'
                 },
-                body: JSON.stringify(newStudent),
+                body: JSON.stringify({ record: updatedStudents }),
             });
             if (!response.ok) {
                 throw new Error('Failed to add student');
             }
-            fetchStudents(); // Re-fetch students after adding new student
+            setStudents(updatedStudents);
         } catch (error) {
             console.error('Error creating student:', error);
         }
@@ -54,19 +55,20 @@ function App() {
 
     const handleUpdateStudent = async (updatedStudent) => {
         try {
-            const response = await fetch(`https://api.jsonbin.io/v3/b/6676a887e41b4d34e407300b/${updatedStudent.id}`, {
+            const updatedStudents = students.map(student => student.id === updatedStudent.id ? updatedStudent : student);
+            const response = await fetch('https://api.jsonbin.io/v3/b/6676a887e41b4d34e407300b', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-Master-Key': '$2a$10$R8Bnxpjj80f8ikXutRQjUOgV9YHIWt5h7ZTKEnTAVtMMcVSKYd.L2',
                     'X-Access-Key': '$2a$10$c4R6pg/2VliBAq4lwlbmDOsJNuXN2DWOyPwhlZmZLFxr822dQ7TgK'
                 },
-                body: JSON.stringify(updatedStudent),
+                body: JSON.stringify({ record: updatedStudents }),
             });
             if (!response.ok) {
                 throw new Error('Failed to update student');
             }
-            fetchStudents(); // Re-fetch students after updating student
+            setStudents(updatedStudents);
         } catch (error) {
             console.error('Error updating student:', error);
         }
@@ -74,17 +76,20 @@ function App() {
 
     const handleDeleteStudent = async (id) => {
         try {
-            const response = await fetch(`https://api.jsonbin.io/v3/b/6676a887e41b4d34e407300b/${id}`, {
-                method: 'DELETE',
+            const updatedStudents = students.filter(student => student.id !== id);
+            const response = await fetch('https://api.jsonbin.io/v3/b/6676a887e41b4d34e407300b', {
+                method: 'PUT',
                 headers: {
+                    'Content-Type': 'application/json',
                     'X-Master-Key': '$2a$10$R8Bnxpjj80f8ikXutRQjUOgV9YHIWt5h7ZTKEnTAVtMMcVSKYd.L2',
                     'X-Access-Key': '$2a$10$c4R6pg/2VliBAq4lwlbmDOsJNuXN2DWOyPwhlZmZLFxr822dQ7TgK'
-                }
+                },
+                body: JSON.stringify({ record: updatedStudents }),
             });
             if (!response.ok) {
                 throw new Error('Failed to delete student');
             }
-            fetchStudents(); // Re-fetch students after deleting student
+            setStudents(updatedStudents);
         } catch (error) {
             console.error('Error deleting student:', error);
         }
@@ -104,5 +109,4 @@ function App() {
 }
 
 export default App;
-
 

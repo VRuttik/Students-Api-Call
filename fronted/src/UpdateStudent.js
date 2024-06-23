@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
 
-function UpdateStudent({ onUpdateStudent }) {
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+
+function UpdateStudent({ students, onUpdateStudent }) {
     const { id } = useParams();
-    const history = useHistory();
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [studentClass, setStudentClass] = useState('');
     const [email, setEmail] = useState('');
@@ -11,23 +12,15 @@ function UpdateStudent({ onUpdateStudent }) {
     const [gender, setGender] = useState('');
 
     useEffect(() => {
-        fetch(`https://api.jsonbin.io/v3/b/6676a887e41b4d34e407300b/latest`, {
-            headers: {
-                'X-Master-Key': '$2a$10$R8Bnxpjj80f8ikXutRQjUOgV9YHIWt5h7ZTKEnTAVtMMcVSKYd.L2',
-                'X-Access-Key': '$2a$10$c4R6pg/2VliBAq4lwlbmDOsJNuXN2DWOyPwhlZmZLFxr822dQ7TgK'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            const student = data.record.find(s => s.id === id);
+        const student = students.find(s => s.id === id);
+        if (student) {
             setName(student.name);
             setStudentClass(student.class);
             setEmail(student.email);
             setHobbies(student.hobbies);
             setGender(student.gender);
-        })
-        .catch(error => console.error('Error fetching student data:', error));
-    }, [id]);
+        }
+    }, [id, students]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,7 +33,7 @@ function UpdateStudent({ onUpdateStudent }) {
             gender
         };
         onUpdateStudent(updatedStudent);
-        history.push('/');
+        navigate('/');
     };
 
     return (
@@ -69,7 +62,7 @@ function UpdateStudent({ onUpdateStudent }) {
                         <input type='text' placeholder='Enter Gender' className='form-control' id='gender' value={gender} onChange={(e) => setGender(e.target.value)} required />
                     </div>
                     <button type='submit' className='btn btn-primary'>Submit</button>
-                    <button type='button' className='btn btn-secondary' style={{ float: 'right' }} onClick={() => history.push('/')}>Cancel</button>
+                    <button type='button' className='btn btn-secondary' style={{ float: 'right' }} onClick={() => navigate('/')}>Cancel</button>
                 </form>
             </div>
         </div>
@@ -77,4 +70,3 @@ function UpdateStudent({ onUpdateStudent }) {
 }
 
 export default UpdateStudent;
-

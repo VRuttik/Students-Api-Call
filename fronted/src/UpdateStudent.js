@@ -81,7 +81,7 @@ function UpdateStudent({ students, onUpdateStudent }) {
                         <input type='text' placeholder='Enter Gender' className='form-control' id='gender' value={gender} onChange={(e) => setGender(e.target.value)} required />
                     </div>
                     <button type='submit' className='btn btn-primary'>Submit</button>
-                    <button type='button' className='btn btn-secondary' style={{ marginLeft: '10px' }} onClick={handleCancel}>Cancel</button>
+                    <button type='button' className='btn btn-secondary' style={{ float: 'right' }} onClick={handleCancel}>Cancel</button>
                 </form>
             </div>
         </div>

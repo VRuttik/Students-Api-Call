@@ -37,7 +37,6 @@ function App() {
 
     const handleAddStudent = async (newStudent) => {
         try {
-            // Ensure the new student conforms to the format
             const { id, name, email, class: studentClass, hobbies, gender } = newStudent;
             const updatedStudents = [...students, { id, name, email, class: studentClass, hobbies, gender }];
             const response = await fetch('https://api.jsonbin.io/v3/b/6676a887e41b4d34e407300b', {
@@ -60,7 +59,6 @@ function App() {
 
     const handleUpdateStudent = async (updatedStudent) => {
         try {
-            // Ensure the updated student conforms to the format
             const { id, name, email, class: studentClass, hobbies, gender } = updatedStudent;
             const updatedStudents = students.map(student => 
                 student.id === id ? { id, name, email, class: studentClass, hobbies, gender } : student

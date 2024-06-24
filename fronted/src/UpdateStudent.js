@@ -7,7 +7,7 @@ function UpdateStudent({ students, onUpdateStudent }) {
     const [name, setName] = useState('');
     const [studentClass, setStudentClass] = useState('');
     const [email, setEmail] = useState('');
-    const [hobbies, setHobbies] = useState('');
+    const [hobbies, setHobbies] = useState([]);
     const [gender, setGender] = useState('');
 
     useEffect(() => {
@@ -17,7 +17,7 @@ function UpdateStudent({ students, onUpdateStudent }) {
                 setName(student.name);
                 setStudentClass(student.class);
                 setEmail(student.email);
-                setHobbies(student.hobbies);
+                setHobbies(student.hobbies || []);
                 setGender(student.gender);
             }
         }
@@ -34,6 +34,10 @@ function UpdateStudent({ students, onUpdateStudent }) {
             gender
         };
         onUpdateStudent(updatedStudent);
+        navigate('/');
+    };
+
+    const handleCancel = () => {
         navigate('/');
     };
 
@@ -56,14 +60,28 @@ function UpdateStudent({ students, onUpdateStudent }) {
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='hobbies'>Hobbies</label>
-                        <input type='text' placeholder='Enter Hobbies' className='form-control' id='hobbies' value={hobbies} onChange={(e) => setHobbies(e.target.value)} required />
+                        <select
+                            id='hobbies'
+                            className='form-control'
+                            multiple
+                            value={hobbies}
+                            onChange={(e) => setHobbies(Array.from(e.target.selectedOptions, option => option.value))}
+                            required
+                        >
+                            <option value='Reading'>Reading</option>
+                            <option value='Writing'>Writing</option>
+                            <option value='Driving'>Driving</option>
+                            <option value='Swimming'>Swimming</option>
+                            <option value='Painting'>Painting</option>
+                            <option value='Cycling'>Cycling</option>
+                        </select>
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='gender'>Gender</label>
                         <input type='text' placeholder='Enter Gender' className='form-control' id='gender' value={gender} onChange={(e) => setGender(e.target.value)} required />
                     </div>
                     <button type='submit' className='btn btn-primary'>Submit</button>
-                    <button type='button' className='btn btn-secondary' style={{ float: 'right' }} onClick={() => navigate('/')}>Cancel</button>
+                    <button type='button' className='btn btn-secondary' style={{ marginLeft: '10px' }} onClick={handleCancel}>Cancel</button>
                 </form>
             </div>
         </div>
@@ -71,3 +89,4 @@ function UpdateStudent({ students, onUpdateStudent }) {
 }
 
 export default UpdateStudent;
+

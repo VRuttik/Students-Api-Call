@@ -76,3 +76,4 @@ function CreateStudent({ onAddStudent }) {
 }
 
 export default CreateStudent;
+

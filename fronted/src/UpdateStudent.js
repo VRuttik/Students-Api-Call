@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -12,13 +11,15 @@ function UpdateStudent({ students, onUpdateStudent }) {
     const [gender, setGender] = useState('');
 
     useEffect(() => {
-        const student = students.find(s => s.id === id);
-        if (student) {
-            setName(student.name);
-            setStudentClass(student.class);
-            setEmail(student.email);
-            setHobbies(student.hobbies);
-            setGender(student.gender);
+        if (Array.isArray(students)) {
+            const student = students.find(s => s.id === id);
+            if (student) {
+                setName(student.name);
+                setStudentClass(student.class);
+                setEmail(student.email);
+                setHobbies(student.hobbies);
+                setGender(student.gender);
+            }
         }
     }, [id, students]);
 
@@ -46,8 +47,8 @@ function UpdateStudent({ students, onUpdateStudent }) {
                         <input type='text' placeholder='Enter Name' className='form-control' id='name' value={name} onChange={(e) => setName(e.target.value)} required />
                     </div>
                     <div className='mb-2'>
-                        <label htmlFor='class'>Class</label>
-                        <input type='text' placeholder='Enter Class' className='form-control' id='class' value={studentClass} onChange={(e) => setStudentClass(e.target.value)} required />
+                        <label htmlFor='studentClass'>Class</label>
+                        <input type='text' placeholder='Enter Class' className='form-control' id='studentClass' value={studentClass} onChange={(e) => setStudentClass(e.target.value)} required />
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='email'>Email</label>

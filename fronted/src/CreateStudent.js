@@ -14,7 +14,7 @@ function CreateStudent({ onAddStudent }) {
         const newStudent = {
             id: Date.now().toString(),
             name,
-            class: studentClass,
+            class: studentClass, // Ensure 'class' is not the reserved keyword
             email,
             hobbies,
             gender
@@ -38,14 +38,12 @@ function CreateStudent({ onAddStudent }) {
                         <input type='text' placeholder='Enter Name' className='form-control' id='name' value={name} onChange={(e) => setName(e.target.value)} required />
                     </div>
                     <div className='mb-2'>
-                        <label htmlFor='class'>Class</label>
-                        <input type='text' placeholder='Enter Class' className='form-control' id='class' value={studentClass} onChange={(e) => setStudentClass(e.target.value)} required />
+                        <label htmlFor='studentClass'>Class</label>
+                        <input type='text' placeholder='Enter Class' className='form-control' id='studentClass' value={studentClass} onChange={(e) => setStudentClass(e.target.value)} required />
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='email'>Email</label>
-                        <input type='email' placeholder='Enter Email' className='form-control'
-                            ChatGPT
-                            id='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <input type='email' placeholder='Enter Email' className='form-control' id='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='hobbies'>Hobbies</label>

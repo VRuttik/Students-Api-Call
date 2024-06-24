@@ -101,7 +101,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Student students={students} onDeleteStudent={handleDeleteStudent} />} />
                     <Route path='/create' element={<CreateStudent onAddStudent={handleAddStudent} />} />
-                    <Route path='/update/:id' element={<UpdateStudent onUpdateStudent={handleUpdateStudent} />} />
+                    <Route path='/update/:id' element={<UpdateStudent students={students} onUpdateStudent={handleUpdateStudent} />} />
                 </Routes>
             </BrowserRouter>
         </div>
@@ -109,4 +109,3 @@ function App() {
 }
 
 export default App;
-

@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 function Student({ students, onDeleteStudent }) {
-    if (!students || students.length === 0) {
+    console.log('students prop:', students); // Debugging line
+
+    if (!Array.isArray(students) || students.length === 0) {
         return (
             <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
                 <div className='container w-100 bg-white rounded'>
@@ -65,4 +68,15 @@ function Student({ students, onDeleteStudent }) {
     );
 }
 
+Student.propTypes = {
+    students: PropTypes.array,
+    onDeleteStudent: PropTypes.func.isRequired,
+};
+
+Student.defaultProps = {
+    students: [],
+};
+
 export default Student;
+
+

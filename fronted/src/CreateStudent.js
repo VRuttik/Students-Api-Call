@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import 'w3-css';
 
 function CreateStudent({ onAddStudent }) {
     const navigate = useNavigate();
@@ -32,7 +33,7 @@ function CreateStudent({ onAddStudent }) {
         <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
             <div className='container w-50 bg-white rounded p-3'>
                 <form onSubmit={handleSubmit}>
-                    <h2>Add Student</h2>
+                    <h2 className='w3-center'>Add Student</h2>
                     <div className='mb-2'>
                         <label htmlFor='name'>Name</label>
                         <input type='text' placeholder='Enter Name' className='form-control' id='name' value={name} onChange={(e) => setName(e.target.value)} required />

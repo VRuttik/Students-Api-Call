@@ -45,7 +45,7 @@ function UpdateStudent({ students, onUpdateStudent }) {
         <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
             <div className='container w-50 bg-white rounded p-3'>
                 <form onSubmit={handleSubmit}>
-                    <h2>Update Student</h2>
+                    <h2 className='w3-center'>Update Student</h2>
                     <div className='mb-2'>
                         <label htmlFor='name'>Name</label>
                         <input type='text' placeholder='Enter Name' className='form-control' id='name' value={name} onChange={(e) => setName(e.target.value)} required />

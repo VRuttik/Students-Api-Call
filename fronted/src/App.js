@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     const [students, setStudents] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchStudents();
@@ -29,12 +30,16 @@ function App() {
             }
         } catch (error) {
             console.error('Error fetching students:', error);
+        } finally {
+            setLoading(false);
         }
     };
 
     const handleAddStudent = async (newStudent) => {
         try {
-            const updatedStudents = [...students, newStudent];
+            // Ensure the new student conforms to the format
+            const { id, name, email, class: studentClass, hobbies, gender } = newStudent;
+            const updatedStudents = [...students, { id, name, email, class: studentClass, hobbies, gender }];
             const response = await fetch('https://api.jsonbin.io/v3/b/6676a887e41b4d34e407300b', {
                 method: 'PUT',
                 headers: {
@@ -55,7 +60,11 @@ function App() {
 
     const handleUpdateStudent = async (updatedStudent) => {
         try {
-            const updatedStudents = students.map(student => student.id === updatedStudent.id ? updatedStudent : student);
+            // Ensure the updated student conforms to the format
+            const { id, name, email, class: studentClass, hobbies, gender } = updatedStudent;
+            const updatedStudents = students.map(student => 
+                student.id === id ? { id, name, email, class: studentClass, hobbies, gender } : student
+            );
             const response = await fetch('https://api.jsonbin.io/v3/b/6676a887e41b4d34e407300b', {
                 method: 'PUT',
                 headers: {
@@ -99,7 +108,7 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<Student students={students} onDeleteStudent={handleDeleteStudent} />} />
+                    <Route path='/' element={<Student students={students} loading={loading} onDeleteStudent={handleDeleteStudent} />} />
                     <Route path='/create' element={<CreateStudent onAddStudent={handleAddStudent} />} />
                     <Route path='/update/:id' element={<UpdateStudent students={students} onUpdateStudent={handleUpdateStudent} />} />
                 </Routes>

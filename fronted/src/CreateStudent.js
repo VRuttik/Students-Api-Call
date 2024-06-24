@@ -14,7 +14,7 @@ function CreateStudent({ onAddStudent }) {
         const newStudent = {
             id: Date.now().toString(),
             name,
-            class: studentClass, // Ensure 'class' is not the reserved keyword
+            class: studentClass,
             email,
             hobbies,
             gender
@@ -47,7 +47,21 @@ function CreateStudent({ onAddStudent }) {
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='hobbies'>Hobbies</label>
-                        <input type='text' placeholder='Enter Hobbies' className='form-control' id='hobbies' value={hobbies} onChange={(e) => setHobbies(e.target.value)} required />
+                        <select
+                            id='hobbies'
+                            className='form-control'
+                            value={hobbies}
+                            onChange={(e) => setHobbies(e.target.value)}
+                            required
+                        >
+                            <option value=''>Select Hobby</option>
+                            <option value='Reading'>Reading</option>
+                            <option value='Writing'>Writing</option>
+                            <option value='Driving'>Driving</option>
+                            <option value='Swimming'>Swimming</option>
+                            <option value='Painting'>Painting</option>
+                            <option value='Cycling'>Cycling</option>
+                        </select>
                     </div>
                     <div className='mb-2'>
                         <label htmlFor='gender'>Gender</label>

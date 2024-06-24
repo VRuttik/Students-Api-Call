@@ -35,19 +35,19 @@ function CreateStudent({ onAddStudent }) {
                 <form onSubmit={handleSubmit}>
                     <h2 className='w3-center'>Add Student</h2>
                     <div className='mb-2'>
-                        <label htmlFor='name'>Name</label>
+                        <label htmlFor='name'><b>Name:</b></label>
                         <input type='text' placeholder='Enter Name' className='form-control' id='name' value={name} onChange={(e) => setName(e.target.value)} required />
                     </div>
                     <div className='mb-2'>
-                        <label htmlFor='studentClass'>Class</label>
+                        <label htmlFor='studentClass'><b>Class:</b></label>
                         <input type='text' placeholder='Enter Class' className='form-control' id='studentClass' value={studentClass} onChange={(e) => setStudentClass(e.target.value)} required />
                     </div>
                     <div className='mb-2'>
-                        <label htmlFor='email'>Email</label>
+                        <label htmlFor='email'><b>Email:</b></label>
                         <input type='email' placeholder='Enter Email' className='form-control' id='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
                     </div>
                     <div className='mb-2'>
-                        <label htmlFor='hobbies'>Hobbies</label>
+                        <label htmlFor='hobbies'><b>Hobbies:</b></label>
                         <select
                             id='hobbies'
                             className='form-control'
@@ -65,7 +65,7 @@ function CreateStudent({ onAddStudent }) {
                         </select>
                     </div>
                     <div className='mb-2'>
-                        <label htmlFor='gender'>Gender</label>
+                        <label htmlFor='gender'><b>Gender:</b></label>
                         <input type='text' placeholder='Enter Gender' className='form-control' id='gender' value={gender} onChange={(e) => setGender(e.target.value)} required />
                     </div>
                     <button type='submit' className='btn btn-success'>Submit</button>

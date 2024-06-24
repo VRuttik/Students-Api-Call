@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
-import'w3-css';
+import 'w3-css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Student({ students, loading, onDeleteStudent }) {
     if (loading) {
@@ -22,16 +23,16 @@ function Student({ students, loading, onDeleteStudent }) {
         return (
             <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
                 <div className='container w-100 bg-white rounded'>
-                    <Link to="/create" className='btn btn-success'>Add +</Link>
-                    <table className='table'>
+                    <Link to="/create" className='btn btn-success'><FontAwesomeIcon icon={faPlus} /></Link>
+                    <table className='table table-bordered table-hover'>
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Class</th>
-                                <th>Email</th>
-                                <th>Hobbies</th>
-                                <th>Gender</th>
-                                <th>Action</th>
+                                <th><center>Name</center></th>
+                                <th><center>Class</center></th>
+                                <th><center>Email</center></th>
+                                <th><center>Hobbies</center></th>
+                                <th><center>Gender</center></th>
+                                <th><center>Action</center></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,28 +50,29 @@ function Student({ students, loading, onDeleteStudent }) {
         <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
             <div className='container w-100 bg-white rounded'>
                 <Link to="/create" className='btn btn-success' style={{ float: "right", marginTop: "20px" }}><FontAwesomeIcon icon={faPlus} /></Link>
-                <table className='table'>
+                <table className='table table-bordered table-hover'>
                     <thead className='thead-dark'>
                         <tr>
-                            <th>Name</th>
-                            <th>Class</th>
-                            <th>Email</th>
-                            <th>Hobbies</th>
-                            <th>Gender</th>
-                            <th>Action</th>
+                            <th><center>Name</center></th>
+                            <th><center>Class</center></th>
+                            <th><center>Email</center></th>
+                            <th><center>Hobbies</center></th>
+                            <th><center>Gender</center></th>
+                            <th><center>Action</center></th>
                         </tr>
                     </thead>
                     <tbody>
                         {students.map((student) => (
                             <tr key={student.id}>
-                                <td>{student.name}</td>
-                                <td>{student.class}</td>
-                                <td>{student.email}</td>
-                                <td>{student.hobbies}</td>
-                                <td>{student.gender}</td>
-                                <td>
+                                <td><center>{student.name}</center></td>
+                                <td><center>{student.class}</center></td>
+                                <td><center>{student.email}</center></td>
+                                <td><center>{student.hobbies}</center></td>
+                                <td><center>{student.gender}</center></td>
+                                <td><center>
                                     <Link to={`/update/${student.id}`} className='btn btn-primary'><FontAwesomeIcon icon={faPen} /></Link>
                                     <button className='btn btn-danger ms-2' onClick={() => onDeleteStudent(student.id)}><FontAwesomeIcon icon={faTrash} /></button>
+                                </center>
                                 </td>
                             </tr>
                         ))}

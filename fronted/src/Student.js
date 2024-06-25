@@ -23,8 +23,8 @@ function Student({ students, loading, onDeleteStudent }) {
         return (
             <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
                 <div className='container w-100 bg-white rounded'>
-                    <Link to="/create" className='btn btn-success'><FontAwesomeIcon icon={faPlus} /></Link>
-                    <table className='table table-bordered table-hover'>
+                    <Link to="/create" className='btn btn-success' style={{ float: "right", marginTop: "20px" }}><FontAwesomeIcon icon={faPlus} /></Link>
+                    <table className='table table-bordered table-hover bg-transparent'>
                         <thead>
                             <tr>
                                 <th><center>Name</center></th>

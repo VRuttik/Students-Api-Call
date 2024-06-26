@@ -8,7 +8,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 1050; /* Higher than Bootstrap modal's default z-index */
+
+    /* Hide the popup when Bootstrap modal is shown */
+    &.modal-open {
+        display: none;
+    }
 }
 
 .popup-content {
@@ -35,4 +40,3 @@
     font-size: 18px;
     margin-bottom: 0;
 }
-

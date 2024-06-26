@@ -13,6 +13,7 @@ function UpdateStudent({ students, onUpdateStudent }) {
     const [nameError, setNameError] = useState('');
     const [hobbiesError, setHobbiesError] = useState('');
     const [genderError, setGenderError] = useState('');
+    const [showModal, setShowModal] = useState(false); // State to control modal visibility
 
     useEffect(() => {
         if (Array.isArray(students)) {
@@ -65,7 +66,7 @@ function UpdateStudent({ students, onUpdateStudent }) {
         };
 
         onUpdateStudent(updatedStudent);
-        navigate('/');
+        setShowModal(true); // Show the modal upon successful form submission
     };
 
     const handleClassChange = (e) => {
@@ -83,6 +84,11 @@ function UpdateStudent({ students, onUpdateStudent }) {
 
     const handleGenderChange = (e) => {
         setGender(e.target.value);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+        navigate('/'); // Redirect to home page or any other route upon closing modal
     };
 
     return (
@@ -257,10 +263,30 @@ function UpdateStudent({ students, onUpdateStudent }) {
                         Cancel
                     </button>
                 </form>
+
+                {/* Modal */}
+                {showModal && (
+                    <div className="modal" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title">Success</h5>
+                                    <button type="button" className="btn-close" aria-label="Close" onClick={closeModal}></button>
+                                </div>
+                                <div className="modal-body">
+                                    <p>Student updated successfully!</p>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" onClick={closeModal}>Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {/* End Modal */}
             </div>
         </div>
     );
 }
 
 export default UpdateStudent;
-

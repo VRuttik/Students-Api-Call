@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
-import 'w3-css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './Student.css'; // Import the CSS file for custom styles
 
 function Student({ students, loading, onDeleteStudent }) {
     if (loading) {
@@ -21,17 +20,17 @@ function Student({ students, loading, onDeleteStudent }) {
 
     if (!Array.isArray(students) || students.length === 0) {
         return (
-            <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
+            <div className='d-flex vh-100 bg-white justify-content-center align-items-center'>
                 <div className='container w-100 bg-white rounded'>
-                    <Link to="/create" className='btn btn-success' style={{ float: "right", marginTop: "20px" }}><FontAwesomeIcon icon={faPlus} /></Link>
+                    <Link to="/create" className='btn btn-success' id='faPen' data-toggle="tooltip" data-placement="right" title="Tooltip on right">Add <FontAwesomeIcon icon={faPlus} /></Link>
                     <table className='table table-bordered table-hover bg-transparent'>
                         <thead>
                             <tr>
-                                <th><center>Name</center></th>
-                                <th><center>Class</center></th>
-                                <th><center>Email</center></th>
-                                <th><center>Hobbies</center></th>
-                                <th><center>Gender</center></th>
+                                <th>Name</th>
+                                <th>Class</th>
+                                <th>Email</th>
+                                <th>Hobbies</th>
+                                <th>Gender</th>
                                 <th><center>Action</center></th>
                             </tr>
                         </thead>
@@ -47,31 +46,32 @@ function Student({ students, loading, onDeleteStudent }) {
     }
 
     return (
-        <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
-            <div className='container w-100 bg-white rounded'>
-                <Link to="/create" className='btn btn-success' style={{ float: "right", marginTop: "20px" }}><FontAwesomeIcon icon={faPlus} /></Link>
+        <div className='d-flex flex-column vh-100 bg-primary justify-content-center align-items-center'>
+            <h1 id="awf">AWF Student's</h1> {/* Heading above the table */}
+            <div className='container w-100 bg-white rounded mt-3 myContainer'> {/* Added mt-3 for top margin */}
+                <Link to="/create" className='btn btn-success' id='faPen' data-toggle="tooltip" data-placement="right" title="Add new Student">Add <FontAwesomeIcon icon={faPlus} /></Link>
                 <table className='table table-bordered table-hover'>
                     <thead className='thead-dark'>
                         <tr>
-                            <th><center>Name</center></th>
-                            <th><center>Class</center></th>
-                            <th><center>Email</center></th>
-                            <th><center>Hobbies</center></th>
-                            <th><center>Gender</center></th>
+                            <th>Name</th>
+                            <th>Class</th>
+                            <th>Email</th>
+                            <th>Hobbies</th>
+                            <th>Gender</th>
                             <th><center>Action</center></th>
                         </tr>
                     </thead>
                     <tbody>
                         {students.map((student) => (
                             <tr key={student.id}>
-                                <td><center>{student.name}</center></td>
-                                <td><center>{student.class}</center></td>
-                                <td><center>{student.email}</center></td>
-                                <td><center>{student.hobbies}</center></td>
-                                <td><center>{student.gender}</center></td>
+                                <td>{student.name}</td>
+                                <td>{student.class}</td>
+                                <td>{student.email}</td>
+                                <td>{student.hobbies.join(', ')}</td> {/* Display hobbies with comma-separated values */}
+                                <td>{student.gender}</td>
                                 <td><center>
-                                    <Link to={`/update/${student.id}`} className='btn btn-primary'><FontAwesomeIcon icon={faPen} /></Link>
-                                    <button className='btn btn-danger ms-2' onClick={() => onDeleteStudent(student.id)}><FontAwesomeIcon icon={faTrash} /></button>
+                                    <Link to={`/update/${student.id}`} className='btn btn-primary' data-toggle="tooltip" data-placement="left" title="Update Student"><FontAwesomeIcon icon={faPen} /></Link>
+                                    <button className='btn btn-danger ms-2' data-toggle="tooltip" data-placement="right" title="Delete Student" onClick={() => onDeleteStudent(student.id)}><FontAwesomeIcon icon={faTrash} /></button>
                                 </center>
                                 </td>
                             </tr>

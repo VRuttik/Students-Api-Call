@@ -1,0 +1,13 @@
+#faPen {
+    float: right;
+    margin-bottom: 20px;
+}
+
+.myContainer {
+    padding-top: 2%;
+}
+
+#awf {
+    text-align: center;
+    color: #fff; /* Blue color for the heading */
+}

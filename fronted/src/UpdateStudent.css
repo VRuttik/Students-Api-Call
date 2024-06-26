@@ -1,0 +1,18 @@
+/* Style for selected checkboxes */
+.hobby-checkbox:checked + .form-check-label {
+    background-color: orange;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.myClass {
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+#myform {
+    padding-left: 50px;
+    padding-top: 40px;
+    padding-right: 50px;
+}

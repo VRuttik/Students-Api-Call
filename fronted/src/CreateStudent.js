@@ -242,7 +242,7 @@ function CreateStudent({ onAddStudent }) {
                         {genderError && <div className='invalid-feedback d-block'>{genderError}</div>}
                     </div>
                     <button type='submit' className='btn btn-success' id='myButton1' >Submit</button>
-                    &#160; &#160; &#160; &#160;
+                    &#160; &#160; &#160;
                     <button
                         type='button'
                         className='btn btn-danger ms-2' id='myButton2'

@@ -70,7 +70,7 @@ function Student({ students, loading, onDeleteStudent }) {
                                 <td>{student.hobbies.join(', ')}</td> {/* Display hobbies with comma-separated values */}
                                 <td>{student.gender}</td>
                                 <td><center>
-                                    <Link to={`/update/${student.id}`} className='btn btn-primary' data-toggle="tooltip" data-placement="left" title="Update Student"><FontAwesomeIcon icon={faPen} /></Link>
+                                    <Link to={`/update/${student.id}`} className='btn btn-primary' data-toggle="tooltip" data-placement="right" title="Update Student"><FontAwesomeIcon icon={faPen} /></Link>
                                     <button className='btn btn-danger ms-2' data-toggle="tooltip" data-placement="right" title="Delete Student" onClick={() => onDeleteStudent(student.id)}><FontAwesomeIcon icon={faTrash} /></button>
                                 </center>
                                 </td>

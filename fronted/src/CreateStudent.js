@@ -88,7 +88,7 @@ function CreateStudent({ onAddStudent }) {
     };
 
     return (
-        <div className='d-flex vh-80 bg-primary justify-content-center align-items-center myClass'>
+        <div className='d-flex vh-80 bg-light justify-content-center align-items-center myClass'>
             <div className='container w-50 bg-white rounded p-3'>
                 <form onSubmit={handleSubmit} id="myform">
                     <h2 className='text-center'>Add Student</h2>

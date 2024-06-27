@@ -26,7 +26,7 @@ function Student({ students, loading, onDeleteStudent }) {
 
     if (loading) {
         return (
-            <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
+            <div className='d-flex vh-100 bg-light justify-content-center align-items-center'>
                 <div className='container w-100 bg-white rounded text-center p-3'>
                     <div className="spinner-border text-primary" role="status">
                         <span className="visually-hidden">Loading...</span>
@@ -38,7 +38,7 @@ function Student({ students, loading, onDeleteStudent }) {
 
     if (!Array.isArray(students) || students.length === 0) {
         return (
-            <div className='d-flex vh-100 bg-white justify-content-center align-items-center'>
+            <div className='d-flex vh-100 bg-light justify-content-center align-items-center'>
                 <div className='container w-100 bg-white rounded'>
                     <Link to="/create" className='btn btn-success' id='faPen' data-toggle="tooltip" data-placement="right" title="Tooltip on right">Add <FontAwesomeIcon icon={faPlus} /></Link>
                     <table className='table table-bordered table-hover bg-transparent'>
@@ -64,7 +64,7 @@ function Student({ students, loading, onDeleteStudent }) {
     }
 
     return (
-        <div className='d-flex flex-column vh-100 bg-primary justify-content-center align-items-center'>
+        <div className='d-flex flex-column bg-light vh-100 justify-content-center align-items-center'>
             <h1 id="awf">AWF Student's</h1> {/* Heading above the table */}
             <div className='container w-100 bg-white rounded mt-3 myContainer'> {/* Added mt-3 for top margin */}
                 <Link to="/create" className='btn btn-success' id='faPen' data-toggle="tooltip" data-placement="right" title="Add new Student">Add <FontAwesomeIcon icon={faPlus} /></Link>

@@ -9,5 +9,9 @@
 
 #awf {
     text-align: center;
-    color: #fff; /* Blue color for the heading */
+    color: #ff208c; /* Blue color for the heading */
+}
+
+.table {
+    border: 2px solid #5bbcff;
 }

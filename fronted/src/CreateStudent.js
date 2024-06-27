@@ -12,6 +12,7 @@ function CreateStudent({ onAddStudent }) {
     const [nameError, setNameError] = useState('');
     const [hobbiesError, setHobbiesError] = useState('');
     const [genderError, setGenderError] = useState('');
+    const [showModal, setShowModal] = useState(false); // State to control modal visibility
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -59,7 +60,9 @@ function CreateStudent({ onAddStudent }) {
         setNameError('');
         setHobbiesError('');
         setGenderError('');
-        navigate('/');
+
+        // Show the modal upon successful form submission
+        setShowModal(true);
     };
 
     const handleClassChange = (e) => {
@@ -77,6 +80,11 @@ function CreateStudent({ onAddStudent }) {
 
     const handleGenderChange = (e) => {
         setGender(e.target.value);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+        navigate('/'); // Redirect to home page or any other route upon closing modal
     };
 
     return (
@@ -251,6 +259,27 @@ function CreateStudent({ onAddStudent }) {
                         Cancel
                     </button>
                 </form>
+
+                {/* Modal */}
+                {showModal && (
+                    <div className="modal" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title">Success</h5>
+                                    <button type="button" className="btn-close" aria-label="Close" onClick={closeModal}></button>
+                                </div>
+                                <div className="modal-body">
+                                    <p>Student added successfully!</p>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" onClick={closeModal}>Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {/* End Modal */}
             </div>
         </div>
     );

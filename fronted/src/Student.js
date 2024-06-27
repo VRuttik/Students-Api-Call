@@ -100,7 +100,7 @@ function Student({ students, loading, onDeleteStudent }) {
 
             {/* Delete Confirmation Modal */}
             <div className={`modal ${showDeleteModal ? 'show' : ''}`} tabIndex="-1" role="dialog" style={{ display: showDeleteModal ? 'block' : 'none' }}>
-                <div className="modal-dialog" role="document">
+                <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title">Confirm Delete</h5>

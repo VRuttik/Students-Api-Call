@@ -262,11 +262,11 @@ function CreateStudent({ onAddStudent }) {
 
                 {/* Modal */}
                 {showModal && (
-                    <div className="modal" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
-                        <div className="modal-dialog" role="document">
+                    <div className="modal" tabIndex="-1" role="dialog" style={{ display: 'block', backgroundColor: 'orange' }}>
+                        <div className="modal-dialog modal-dialog-centered" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title">Success</h5>
+                                    <h5 className="modal-title">AWF Page Says..</h5>
                                     <button type="button" className="btn-close" aria-label="Close" onClick={closeModal}></button>
                                 </div>
                                 <div className="modal-body">

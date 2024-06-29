@@ -40,7 +40,9 @@ function Student({ students, loading, onDeleteStudent }) {
         return (
             <div className='d-flex vh-100 bg-light justify-content-center align-items-center'>
                 <div className='container w-100 bg-white rounded'>
-                    <Link to="/create" className='btn btn-success' id='faPen' data-toggle="tooltip" data-placement="right" title="Tooltip on right">Add <FontAwesomeIcon icon={faPlus} /></Link>
+                    <Link to="/create" className='btn btn-success' id='faPen' data-toggle="tooltip" data-placement="right" title="Add new Student">
+                        Add <FontAwesomeIcon icon={faPlus} />
+                    </Link>
                     <table className='table table-bordered table-hover bg-transparent'>
                         <thead>
                             <tr>
@@ -65,9 +67,11 @@ function Student({ students, loading, onDeleteStudent }) {
 
     return (
         <div className='d-flex flex-column bg-light vh-100 justify-content-center align-items-center'>
-            <h1 id="awf">AWF Student's</h1> {/* Heading above the table */}
+            <h1 id="awf">AWF Students</h1> {/* Heading above the table */}
             <div className='container w-100 bg-white rounded mt-3 myContainer'> {/* Added mt-3 for top margin */}
-                <Link to="/create" className='btn btn-success' id='faPen' data-toggle="tooltip" data-placement="right" title="Add new Student">Add <FontAwesomeIcon icon={faPlus} /></Link>
+                <Link to="/create" className='btn btn-success mb-3' id='faPen' data-toggle="tooltip" data-placement="right" title="Add new Student">
+                    Add <FontAwesomeIcon icon={faPlus} />
+                </Link>
                 <table className='table table-bordered table-hover'>
                     <thead className='thead-dark'>
                         <tr>
@@ -87,10 +91,15 @@ function Student({ students, loading, onDeleteStudent }) {
                                 <td>{student.email}</td>
                                 <td>{student.hobbies.join(', ')}</td> {/* Display hobbies with comma-separated values */}
                                 <td>{student.gender}</td>
-                                <td><center>
-                                    <Link to={`/update/${student.id}`} className='btn btn-primary' data-toggle="tooltip" data-placement="right" title="Update Student"><FontAwesomeIcon icon={faPen} /></Link>
-                                    <button className='btn btn-danger ms-2' data-toggle="tooltip" data-placement="right" title="Delete Student" onClick={() => handleDeleteClick(student.id)}><FontAwesomeIcon icon={faTrash} /></button>
-                                </center>
+                                <td>
+                                    <center>
+                                        <Link to={`/update/${student.id}`} className='btn btn-primary' data-toggle="tooltip" data-placement="right" title="Update Student">
+                                            <FontAwesomeIcon icon={faPen} />
+                                        </Link>
+                                        <button className='btn btn-danger ms-2' data-toggle="tooltip" data-placement="right" title="Delete Student" onClick={() => handleDeleteClick(student.id)}>
+                                            <FontAwesomeIcon icon={faTrash} />
+                                        </button>
+                                    </center>
                                 </td>
                             </tr>
                         ))}
@@ -99,23 +108,25 @@ function Student({ students, loading, onDeleteStudent }) {
             </div>
 
             {/* Delete Confirmation Modal */}
-            <div className={`modal ${showDeleteModal ? 'show' : ''}`} tabIndex="-1" role="dialog" style={{ display: showDeleteModal ? 'block' : 'none' }}>
-                <div className="modal-dialog modal-dialog-centered" role="document">
-                    <div>
-                        <div className="modal-header">
-                            <h5 className="modal-title">AWF Page Say's...</h5>
-                            <button type="button" className="btn-close" aria-label="Close" onClick={handleCancelDelete}></button>
-                        </div>
-                        <div className="modal-body">
-                            <p>Are you sure you want to delete this Student?</p>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" onClick={handleCancelDelete}>Cancel</button>
-                            <button type="button" className="btn btn-danger" onClick={handleConfirmDelete}>Delete</button>
+            {showDeleteModal && (
+                <div className="modal show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+                    <div className="modal-dialog modal-dialog-centered" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">AWF Page Says...</h5>
+                                <button type="button" className="btn-close" aria-label="Close" onClick={handleCancelDelete}></button>
+                            </div>
+                            <div className="modal-body">
+                                <p>Are you sure you want to delete this Student?</p>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" onClick={handleCancelDelete}>Cancel</button>
+                                <button type="button" className="btn btn-danger" onClick={handleConfirmDelete}>Delete</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
             {/* End Delete Confirmation Modal */}
         </div>
     );

@@ -101,13 +101,13 @@ function Student({ students, loading, onDeleteStudent }) {
             {/* Delete Confirmation Modal */}
             <div className={`modal ${showDeleteModal ? 'show' : ''}`} tabIndex="-1" role="dialog" style={{ display: showDeleteModal ? 'block' : 'none' }}>
                 <div className="modal-dialog modal-dialog-centered" role="document">
-                    <div className="modal-content">
+                    <div>
                         <div className="modal-header">
-                            <h5 className="modal-title">Confirm Delete</h5>
+                            <h5 className="modal-title">AWF Page Say's...</h5>
                             <button type="button" className="btn-close" aria-label="Close" onClick={handleCancelDelete}></button>
                         </div>
                         <div className="modal-body">
-                            <p>Are you sure you want to delete this student?</p>
+                            <p>Are you sure you want to delete this Student?</p>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" onClick={handleCancelDelete}>Cancel</button>

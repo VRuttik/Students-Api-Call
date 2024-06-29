@@ -205,7 +205,17 @@ function UpdateStudent({ students, onUpdateStudent }) {
                                 className="combobox-toggle"
                                 onClick={toggleDropdown}
                             >
-                                Select Hobbies
+                                {hobbies.length === 0 ? "Select Hobbies" : hobbies.map((hobby, index) => (
+                                    <span key={index} className="selected-hobby">
+                                        {hobby}
+                                        <button
+                                            type="button"
+                                            className="btn-close"
+                                            aria-label="Close"
+                                            onClick={() => handleHobbiesChange(hobby)}
+                                        />
+                                    </span>
+                                ))}
                                 <i className={`bi bi-chevron-down ${dropdownOpen ? "open" : ""}`} />
                             </div>
                             {dropdownOpen && (
@@ -282,21 +292,19 @@ function UpdateStudent({ students, onUpdateStudent }) {
                             </div>
                         )}
                     </div>
-                    <div className="two-btn">
+                    <div className="text-center">
                         <button
                             type="button"
-                            className="btn btn-danger ms-2"
-                            id="myButton2"
-                            onClick={() => navigate("/")}
+                            className="btn btn-danger me-2"
+                            onClick={handleCancel}
                         >
                             Cancel
                         </button>
-                        &#160; &#160;
+                        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
                         &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
                         <button
                             type="submit"
                             className="btn btn-success"
-                            id="myButton1"
                         >
                             Submit
                         </button>
@@ -315,7 +323,7 @@ function UpdateStudent({ students, onUpdateStudent }) {
                             className="modal-dialog modal-dialog-centered"
                             role="document"
                         >
-                            <div className="modal-content">
+                            <div className="modal-content modal-content">
                                 <div className="modal-header">
                                     <h5 className="modal-title">
                                         AWF Page Say...

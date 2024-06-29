@@ -1,6 +1,5 @@
 /* Style for selected checkboxes */
 .hobby-checkbox:checked + .form-check-label {
-    background-color: orange;
     color: white;
     padding: 0.5rem;
     border-radius: 5px;
@@ -12,11 +11,27 @@
 }
 
 #myform {
-    padding-left: 50px;
+    padding-left: 80px;
     padding-top: 40px;
-    padding-right: 50px;
+    padding-right: 80px;
+}
+
+.two-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50%;
 }
 
 #myButton1 {
-    margin-left: 180px;
+    margin-right: 320px;
+}
+
+#myButton2 {
+    margin-left: 220px;
+}
+
+.modal-content {
+    background-color: green;
+    color: white;
 }

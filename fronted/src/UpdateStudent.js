@@ -45,7 +45,7 @@ function UpdateStudent({ students, onUpdateStudent }) {
         const nameRegex = /^[A-Z][a-zA-Z ]*$/;
         if (!name.match(nameRegex)) {
             setNameError(
-                "Name should start with a capital letter and contain only alphabets."
+                "Name should start with a capital letter and contain only alphabets.",
             );
             return;
         } else {
@@ -89,7 +89,7 @@ function UpdateStudent({ students, onUpdateStudent }) {
         setHobbies((prevHobbies) =>
             prevHobbies.includes(hobby)
                 ? prevHobbies.filter((h) => h !== hobby)
-                : [...prevHobbies, hobby]
+                : [...prevHobbies, hobby],
         );
     };
 
@@ -112,7 +112,7 @@ function UpdateStudent({ students, onUpdateStudent }) {
 
     return (
         <div className="d-flex vh-80 bg-light justify-content-center align-items-center myClass">
-            <div className="container w-50 bg-white rounded p-3">
+            <div className="container w-50 bg-white rounded p-3" style={{border: "4px solid #ffc102"}}>
                 <form onSubmit={handleSubmit} id="myform">
                     <h2 className="text-center">Update Student</h2>
                     <div className="mb-2">
@@ -205,18 +205,27 @@ function UpdateStudent({ students, onUpdateStudent }) {
                                 className="combobox-toggle"
                                 onClick={toggleDropdown}
                             >
-                                {hobbies.length === 0 ? "Select Hobbies" : hobbies.map((hobby, index) => (
-                                    <span key={index} className="selected-hobby">
-                                        {hobby}
-                                        <button
-                                            type="button"
-                                            className="btn-close"
-                                            aria-label="Close"
-                                            onClick={() => handleHobbiesChange(hobby)}
-                                        />
-                                    </span>
-                                ))}
-                                <i className={`bi bi-chevron-down ${dropdownOpen ? "open" : ""}`} />
+                                {hobbies.length === 0
+                                    ? "Select Hobbies"
+                                    : hobbies.map((hobby, index) => (
+                                          <span
+                                              key={index}
+                                              className="selected-hobby"
+                                          >
+                                              {hobby}
+                                              <button
+                                                  type="button"
+                                                  className="btn-close"
+                                                  aria-label="Close"
+                                                  onClick={() =>
+                                                      handleHobbiesChange(hobby)
+                                                  }
+                                              />
+                                          </span>
+                                      ))}
+                                <i
+                                    className={`bi bi-chevron-down ${dropdownOpen ? "open" : ""}`}
+                                />
                             </div>
                             {dropdownOpen && (
                                 <div className="combobox-options">
@@ -231,7 +240,7 @@ function UpdateStudent({ students, onUpdateStudent }) {
                                                     handleHobbiesChange(hobby)
                                                 }
                                                 checked={hobbies.includes(
-                                                    hobby
+                                                    hobby,
                                                 )}
                                             />
                                             <label
@@ -302,10 +311,7 @@ function UpdateStudent({ students, onUpdateStudent }) {
                         </button>
                         &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
                         &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-                        <button
-                            type="submit"
-                            className="btn btn-success"
-                        >
+                        <button type="submit" className="btn btn-success">
                             Submit
                         </button>
                     </div>
@@ -324,8 +330,8 @@ function UpdateStudent({ students, onUpdateStudent }) {
                             role="document"
                         >
                             <div className="modal-content modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title">
+                                <div className="modal-header" style={{backgroundColor: "#ffd71b"}}>
+                                    <h5 className="modal-title" style={{color: "white"}}>
                                         AWF Page Say...
                                     </h5>
                                     <button

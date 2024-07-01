@@ -89,7 +89,7 @@ function CreateStudent({ onAddStudent }) {
 
     return (
         <div className="d-flex vh-105 bg-light justify-content-center align-items-center myClass">
-            <div className="container w-50 bg-white rounded p-3">
+            <div className="container w-50 bg-white rounded p-3" style={{border: "4px solid #ffc102"}}>
                 <form onSubmit={handleSubmit} id="myform">
                     <h2 className="text-center">Add Student</h2>
                     <div className="mb-2">
@@ -340,11 +340,11 @@ function CreateStudent({ onAddStudent }) {
 
                 {/* Modal */}
                 {showModal && (
-                    <div className="modal" tabIndex="-1" role="dialog" style={{ display: "block", backgroundColor: "orange" }}>
+                    <div className="modal fade show d-block" tabIndex="-1" role="dialog" aria-hidden={!showModal}>
                         <div className="modal-dialog modal-dialog-centered" role="document">
                             <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title">AWF Page Says..</h5>
+                                <div className="modal-header" style={{backgroundColor: "#5fff1b"}}>
+                                    <h5 className="modal-title" style={{color: "white"}}>AWF Page Says..</h5>
                                     <button type="button" className="btn-close" aria-label="Close" onClick={closeModal}></button>
                                 </div>
                                 <div className="modal-body">
@@ -364,3 +364,4 @@ function CreateStudent({ onAddStudent }) {
 }
 
 export default CreateStudent;
+

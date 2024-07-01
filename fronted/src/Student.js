@@ -112,12 +112,12 @@ function Student({ students, loading, onDeleteStudent }) {
                 <div className="modal show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
                     <div className="modal-dialog modal-dialog-centered" role="document">
                         <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">AWF Page Says...</h5>
+                            <div className="modal-header" style={{backgroundColor: "#FF1B1B"}}>
+                                <h5 className="modal-title" style={{color: "white"}}>AWF Page Says...</h5>
                                 <button type="button" className="btn-close" aria-label="Close" onClick={handleCancelDelete}></button>
                             </div>
                             <div className="modal-body">
-                                <p>Are you sure you want to delete this Student?</p>
+                                <p>You want to delete this Student?</p>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" onClick={handleCancelDelete}>Cancel</button>

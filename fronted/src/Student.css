@@ -1,6 +1,7 @@
 #faPen {
     float: right;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .myContainer {
@@ -9,9 +10,25 @@
 
 #awf {
     text-align: center;
-    color: #ff208c; /* Blue color for the heading */
+    color: #2a0037; /* Blue color for the heading */
 }
 
 .table {
     border: 2px solid #5bbcff;
 }
+
+/* Student.css */
+
+/* Center the search bar and increase its height */
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; /* Adjust height as needed */
+}
+
+.input-group input {
+    height: 100%; /* Take full height of the parent */
+}
+
+
